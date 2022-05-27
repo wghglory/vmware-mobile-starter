@@ -1,13 +1,11 @@
 import {StatusBar} from 'expo-status-bar';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import {ThemeProvider, createTheme} from '@rneui/themed';
+import AppProvider from './context/AppProvider';
 
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
-
-const theme = createTheme({});
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -18,10 +16,10 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <ThemeProvider theme={theme}>
+        <AppProvider>
           <Navigation colorScheme={colorScheme} />
           <StatusBar />
-        </ThemeProvider>
+        </AppProvider>
       </SafeAreaProvider>
     );
   }
