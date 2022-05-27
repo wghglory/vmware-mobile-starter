@@ -17,13 +17,12 @@ import {ColorSchemeName, Pressable} from 'react-native';
 import Colors from '../constants/Colors';
 import {useAuth} from '../context/AuthContext';
 import useColorScheme from '../hooks/useColorScheme';
-import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
+import MeScreen from '../screens/MeScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import SplashScreen from '../screens/SplashScreen';
 import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+
 import {
   RootStackParamList,
   RootTabParamList,
@@ -56,15 +55,8 @@ function RootNavigator() {
 
   return (
     <Stack.Navigator>
-      {status === 'loading' ? (
-        <Stack.Screen
-          name="Splash"
-          component={SplashScreen}
-          options={{headerShown: false}}
-        />
-      ) : user?.token ? (
+      {user?.token ? (
         <>
-          <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen
             name="Root"
             component={BottomTabNavigator}
@@ -130,10 +122,10 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+        name="Me"
+        component={MeScreen}
         options={{
-          title: 'Tab Two',
+          title: 'Me',
           tabBarIcon: ({color}) => <TabBarIcon name="code" color={color} />,
         }}
       />

@@ -1,8 +1,10 @@
-import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
+
+import {Button} from '@rneui/base';
+import {Text, View} from '../components/Themed';
 import {useAuth} from '../context/AuthContext';
 
-const HomeScreen = () => {
+export default function MeScreen() {
   const {user, status, signOut} = useAuth();
 
   return (
@@ -11,7 +13,7 @@ const HomeScreen = () => {
       <Button title="Logout" color="red" onPress={signOut} />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -24,5 +26,3 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
 });
-
-export default HomeScreen;
