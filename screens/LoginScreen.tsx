@@ -38,7 +38,9 @@ const LoginScreen = ({navigation}: any) => {
           secureTextEntry
         />
         <Button
+          style={styles.login}
           title="Login"
+          disabled={username === '' || password === ''}
           onPress={() => {
             signIn({username, password});
           }}
@@ -65,6 +67,7 @@ const styles = StyleSheet.create({
   subTitle: {
     fontSize: 24,
     textAlign: 'center',
+    fontWeight: '500',
   },
   imgWrapper: {
     alignItems: 'center',
@@ -72,6 +75,9 @@ const styles = StyleSheet.create({
   },
   inputIconWrapper: {
     marginRight: 10,
+  },
+  login: {
+    paddingHorizontal: 6,
   },
 });
 

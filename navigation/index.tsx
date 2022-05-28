@@ -18,10 +18,10 @@ import Colors from '../constants/Colors';
 import {useAuth} from '../context/AuthContext';
 import useColorScheme from '../hooks/useColorScheme';
 import LoginScreen from '../screens/LoginScreen';
-import MeScreen from '../screens/MeScreen';
+import MoreScreen from '../screens/MoreScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import TabOneScreen from '../screens/TabOneScreen';
+import HomeScreen from '../screens/HomeScreen';
 
 import {
   RootStackParamList,
@@ -95,16 +95,16 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneScreen}
-        options={({navigation}: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
-          tabBarIcon: ({color}) => <TabBarIcon name="code" color={color} />,
+        name="Home"
+        component={HomeScreen}
+        options={({navigation}: RootTabScreenProps<'Home'>) => ({
+          title: 'Home',
+          tabBarIcon: ({color}) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
@@ -122,11 +122,13 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="Me"
-        component={MeScreen}
+        name="More"
+        component={MoreScreen}
         options={{
-          title: 'Me',
-          tabBarIcon: ({color}) => <TabBarIcon name="code" color={color} />,
+          title: 'More',
+          tabBarIcon: ({color}) => (
+            <TabBarIcon name="ellipsis-h" color={color} />
+          ),
         }}
       />
     </BottomTab.Navigator>
