@@ -1,51 +1,25 @@
-import {StyleSheet} from 'react-native';
-
-import {Button, Text} from 'native-base';
-import {View} from '../components/Themed';
+import {Box, Button, HStack, Text, VStack} from 'native-base';
 import {useAuth} from '../context/AuthContext';
 
 export default function MoreScreen() {
   const {user, status, signOut} = useAuth();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.wrapper}>
-        <View style={styles.userWrapper}>
-          <Text style={styles.user}>{user?.name}</Text>
-          <View style={styles.roles}>
-            <Text style={styles.role}>Service Admin</Text>
-            <Text style={styles.role}>Test Role</Text>
-          </View>
-        </View>
+    <Box alignItems={'center'} flex="1" bg="white">
+      <VStack space={4} py="10" w="80%">
+        <VStack space={4} borderRadius="4" bg="gray.100" p="4">
+          <Text fontSize={16} bold>
+            {user?.name}
+          </Text>
+          <HStack space={4}>
+            <Text>Service Admin</Text>
+            <Text>Test Role</Text>
+          </HStack>
+        </VStack>
         <Button bg="black" onPress={signOut}>
           Logout
         </Button>
-      </View>
-    </View>
+      </VStack>
+    </Box>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  wrapper: {width: '80%', paddingVertical: 24},
-  userWrapper: {
-    backgroundColor: '#f8f9fa',
-    borderRadius: 4,
-    padding: 24,
-    marginBottom: 24,
-  },
-  user: {
-    marginBottom: 24,
-    fontWeight: 'bold',
-  },
-  roles: {
-    flexDirection: 'row',
-    backgroundColor: '#f8f9fa',
-  },
-  role: {
-    paddingRight: 12,
-  },
-});
