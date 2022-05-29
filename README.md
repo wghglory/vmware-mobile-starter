@@ -4,11 +4,14 @@ How is this project created?
 
 `expo init <project-name>` and select tabs typescript managed workflow template.
 
-## Add React Native Elements UI library
+## Add NativeBase UI library
+
+https://docs.nativebase.io/install-expo
 
 ```shell
-yarn add @rneui/themed @rneui/base
-yarn add react-native-vector-icons
+yarn add native-base
+expo install react-native-svg
+expo install react-native-safe-area-context
 ```
 
 ## Configure Android localhost API
@@ -33,3 +36,7 @@ Let's map the ports:
 $ adb -s emulator-5554 reverse tcp:3000 tcp:3000
 $ adb -s 2681572e reverse tcp:3000 tcp:3000
 ```
+
+## Find Icons
+
+https://icons.expo.fyi/
