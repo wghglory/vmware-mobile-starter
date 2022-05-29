@@ -1,5 +1,4 @@
 import {Action} from '../models';
-
 import {User} from '../models';
 import {AuthState} from './AuthState';
 

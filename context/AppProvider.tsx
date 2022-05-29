@@ -1,6 +1,6 @@
+import {NativeBaseProvider} from 'native-base';
 import React from 'react';
 import {QueryClient, QueryClientProvider} from 'react-query';
-import {NativeBaseProvider} from 'native-base';
 
 import {AuthProvider} from './AuthContext';
 

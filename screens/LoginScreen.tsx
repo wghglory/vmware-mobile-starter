@@ -1,19 +1,18 @@
+import {AntDesign, MaterialIcons} from '@expo/vector-icons';
+import {
+  Box,
+  Button,
+  Heading,
+  Icon,
+  Input,
+  Stack,
+  Text,
+  VStack,
+} from 'native-base';
 import React, {useState} from 'react';
-import {useAuth} from '../context/AuthContext';
 
 import ProductSvg from '../assets/images/product.svg';
-
-import {
-  Button,
-  Text,
-  Input,
-  Icon,
-  Stack,
-  VStack,
-  Box,
-  Heading,
-} from 'native-base';
-import {MaterialIcons, AntDesign} from '@expo/vector-icons';
+import {useAuth} from '../context/AuthContext';
 
 const LoginScreen = ({navigation}: any) => {
   const [username, setUsername] = useState('');

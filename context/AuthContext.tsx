@@ -1,3 +1,5 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native';
 import React, {
   createContext,
   useCallback,
@@ -6,13 +8,10 @@ import React, {
   useMemo,
   useReducer,
 } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useNavigation} from '@react-navigation/native';
-
-import http from '../utils/axios';
 
 import {ACCESS_TOKEN} from '../constants/AuthToken';
 import {SignInPayload, SignInResponse, User} from '../models';
+import http from '../utils/axios';
 import {AuthActionTypes, authReducer} from './AuthReducer';
 import {AuthState, initialState} from './AuthState';
 

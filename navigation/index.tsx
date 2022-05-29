@@ -6,9 +6,9 @@
 import {FontAwesome} from '@expo/vector-icons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
-  NavigationContainer,
-  DefaultTheme,
   DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
 } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
@@ -17,12 +17,11 @@ import {ColorSchemeName, Pressable} from 'react-native';
 import Colors from '../constants/Colors';
 import {useAuth} from '../context/AuthContext';
 import useColorScheme from '../hooks/useColorScheme';
-import LoginScreen from '../screens/LoginScreen';
-import MoreScreen from '../screens/MoreScreen';
-import ModalScreen from '../screens/ModalScreen';
-import NotFoundScreen from '../screens/NotFoundScreen';
 import HomeScreen from '../screens/HomeScreen';
-
+import LoginScreen from '../screens/LoginScreen';
+import ModalScreen from '../screens/ModalScreen';
+import MoreScreen from '../screens/MoreScreen';
+import NotFoundScreen from '../screens/NotFoundScreen';
 import {
   RootStackParamList,
   RootTabParamList,

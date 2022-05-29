@@ -1,4 +1,5 @@
 import {Box, Button, HStack, Text, VStack} from 'native-base';
+
 import {useAuth} from '../context/AuthContext';
 
 export default function MoreScreen() {

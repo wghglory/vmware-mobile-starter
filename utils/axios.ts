@@ -1,5 +1,5 @@
-import axios, {AxiosError, AxiosRequestConfig} from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios, {AxiosError, AxiosRequestConfig} from 'axios';
 
 import {ACCESS_TOKEN} from '../constants/AuthToken';
 import {BASE_URL} from '../constants/Config';
