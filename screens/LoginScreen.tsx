@@ -73,7 +73,7 @@ const LoginScreen = ({navigation}: any) => {
             Login
           </Button>
 
-          <Text color="red.500" minH={20}>
+          <Text color="red.500" minH={12} alignSelf={'flex-start'}>
             {status === 'error' ? error : ''}
           </Text>
         </Stack>
