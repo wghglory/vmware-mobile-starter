@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {Button, Text} from '@rneui/base';
+import {Button, Text} from 'native-base';
 import {View} from '../components/Themed';
 import {useAuth} from '../context/AuthContext';
 
@@ -11,15 +11,15 @@ export default function MoreScreen() {
     <View style={styles.container}>
       <View style={styles.wrapper}>
         <View style={styles.userWrapper}>
-          <Text style={styles.user} h4>
-            {user?.name}
-          </Text>
+          <Text style={styles.user}>{user?.name}</Text>
           <View style={styles.roles}>
             <Text style={styles.role}>Service Admin</Text>
             <Text style={styles.role}>Test Role</Text>
           </View>
         </View>
-        <Button title="Logout" color="black" onPress={signOut} />
+        <Button bg="black" onPress={signOut}>
+          Logout
+        </Button>
       </View>
     </View>
   );

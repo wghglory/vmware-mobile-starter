@@ -1,11 +1,19 @@
 import React, {useState} from 'react';
 import {useAuth} from '../context/AuthContext';
-import {View, StyleSheet} from 'react-native';
 
 import ProductSvg from '../assets/images/product.svg';
 
-import {Button, Text, Input} from '@rneui/base';
-import {FontAwesome} from '@expo/vector-icons';
+import {
+  Button,
+  Text,
+  Input,
+  Icon,
+  Stack,
+  VStack,
+  Box,
+  Heading,
+} from 'native-base';
+import {MaterialIcons, AntDesign} from '@expo/vector-icons';
 
 const LoginScreen = ({navigation}: any) => {
   const [username, setUsername] = useState('');
@@ -13,73 +21,65 @@ const LoginScreen = ({navigation}: any) => {
   const {status, error, signIn} = useAuth();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.wrapper}>
-        <Text style={styles.title}>VMware Cloud Provider</Text>
-        <Text style={styles.subTitle}>COMMERCE PORTAL ™</Text>
+    <VStack flex="1" alignItems="center" justifyContent="center">
+      <Box w="80%">
+        <Heading size="sm" fontWeight={'400'} textAlign="center">
+          VMware Cloud Provider
+        </Heading>
+        <Heading size="lg" fontWeight={'500'} textAlign="center">
+          COMMERCE PORTAL ™
+        </Heading>
 
-        <View style={styles.imgWrapper}>
+        <Box mb="20" alignItems={'center'}>
           <ProductSvg width={120} height={80} />
-        </View>
+        </Box>
 
-        <Input
-          value={username}
-          placeholder="Enter username"
-          leftIcon={<FontAwesome name="user-o" size={20} />}
-          leftIconContainerStyle={styles.inputIconWrapper}
-          onChangeText={text => setUsername(text)}
-        />
-        <Input
-          value={password}
-          placeholder="Enter password"
-          leftIcon={<FontAwesome name="key" size={20} />}
-          leftIconContainerStyle={styles.inputIconWrapper}
-          onChangeText={text => setPassword(text)}
-          secureTextEntry
-        />
-        <Button
-          title="Login"
-          disabled={username === '' || password === ''}
-          onPress={() => {
-            signIn({username, password});
-          }}
-        />
-        {status === 'error' && <Text style={styles.error}>{error}</Text>}
-      </View>
-    </View>
+        <Stack space={4} alignItems="center">
+          <Input
+            variant="underlined"
+            value={username}
+            placeholder="Enter username"
+            InputLeftElement={
+              <Icon
+                as={<MaterialIcons name="person" />}
+                size={5}
+                mx="2"
+                color="muted.400"
+              />
+            }
+            onChangeText={text => setUsername(text)}
+          />
+          <Input
+            variant="underlined"
+            value={password}
+            placeholder="Enter password"
+            InputLeftElement={
+              <Icon
+                as={<AntDesign name="key" />}
+                size={5}
+                mx="2"
+                color="muted.400"
+              />
+            }
+            onChangeText={text => setPassword(text)}
+            secureTextEntry
+          />
+          <Button
+            w={'100%'}
+            isLoading={status === 'loading'}
+            onPress={() => {
+              signIn({username, password});
+            }}>
+            Login
+          </Button>
+
+          <Text color="red.500" minH={20}>
+            {status === 'error' ? error : ''}
+          </Text>
+        </Stack>
+      </Box>
+    </VStack>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  wrapper: {
-    width: '80%',
-  },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-  },
-  subTitle: {
-    fontSize: 24,
-    textAlign: 'center',
-    fontWeight: '500',
-    marginTop: 10,
-  },
-  imgWrapper: {
-    alignItems: 'center',
-    marginBottom: 80,
-  },
-  inputIconWrapper: {
-    marginRight: 10,
-  },
-  error: {
-    color: 'red',
-    marginTop: 20,
-  },
-});
 
 export default LoginScreen;

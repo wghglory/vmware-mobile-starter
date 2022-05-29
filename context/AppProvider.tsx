@@ -1,10 +1,8 @@
 import React from 'react';
 import {QueryClient, QueryClientProvider} from 'react-query';
-import {ThemeProvider, createTheme} from '@rneui/themed';
+import {NativeBaseProvider} from 'native-base';
 
 import {AuthProvider} from './AuthContext';
-
-const theme = createTheme({});
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,9 +22,9 @@ const queryClient = new QueryClient({
 export default function AppProvider({children}: {children: React.ReactNode}) {
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
+      <NativeBaseProvider>
         <AuthProvider>{children}</AuthProvider>
-      </ThemeProvider>
+      </NativeBaseProvider>
     </QueryClientProvider>
   );
 }
