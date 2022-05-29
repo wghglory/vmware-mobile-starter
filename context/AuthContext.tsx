@@ -71,7 +71,10 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
 
       // navigate(from, {replace: true});
     } catch (error: any) {
-      dispatch({type: AuthActionTypes.SignInFailure, error: error.data});
+      dispatch({
+        type: AuthActionTypes.SignInFailure,
+        error: error.responseText,
+      });
     }
   }, []);
 

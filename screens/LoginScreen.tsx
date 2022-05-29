@@ -10,7 +10,7 @@ import {FontAwesome} from '@expo/vector-icons';
 const LoginScreen = ({navigation}: any) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const {status, signIn} = useAuth();
+  const {status, error, signIn} = useAuth();
 
   return (
     <View style={styles.container}>
@@ -38,13 +38,13 @@ const LoginScreen = ({navigation}: any) => {
           secureTextEntry
         />
         <Button
-          style={styles.login}
           title="Login"
           disabled={username === '' || password === ''}
           onPress={() => {
             signIn({username, password});
           }}
         />
+        {status === 'error' && <Text style={styles.error}>{error}</Text>}
       </View>
     </View>
   );
@@ -62,12 +62,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     textAlign: 'center',
-    marginBottom: 10,
   },
   subTitle: {
     fontSize: 24,
     textAlign: 'center',
     fontWeight: '500',
+    marginTop: 10,
   },
   imgWrapper: {
     alignItems: 'center',
@@ -76,8 +76,9 @@ const styles = StyleSheet.create({
   inputIconWrapper: {
     marginRight: 10,
   },
-  login: {
-    paddingHorizontal: 6,
+  error: {
+    color: 'red',
+    marginTop: 20,
   },
 });
 
